@@ -1,3 +1,10 @@
+##################################### Importing Packages #####################################
+import pandas as pd  #Used for variety of tasks
+import os #Used to change & verify directory
+import seaborn as sns #Used to create lineplot
+import matplotlib.pyplot as plt #Used to edit plot
+from datetime import datetime
+
 ##################################### Settings #####################################
 
 #In the settings section, the following abreviations will be used:
@@ -5,11 +12,26 @@
     # YS = Yield Spread
     # FB = Federal Bonds
     # CB = Covered Bonds
+    
+# CSV File suffix (Is part of csv file name)
+YS_csv_suffix = "2023_12_17"
+FB_csv_suffix = "2023_12_17"
+CB_csv_suffix = "2023_12_17"    
 
 # Decide if you want to show the graphs
 YS_show_graph = True
 FB_show_graph = True
 CB_show_graph = True
+
+# Decide if you want to export graphs as png to figures folder
+YS_export_png = True
+FB_export_png = True
+CB_export_png = True
+
+#Set export name for graph
+YS_export_name = "YS_" + datetime.today().strftime('%Y_%m_%d') + ".png"
+FB_export_name = "FB_" + datetime.today().strftime('%Y_%m_%d') + ".png"
+CB_export_name = "CB_" + datetime.today().strftime('%Y_%m_%d') + ".png"
 
 # Start date on graph
 YS_start_date = "2009-01-01"
@@ -43,7 +65,7 @@ CB_y_label = "Interest Rate [in bp]"
 
 # Set graph title
 YS_graph_title = "Yield Spread between Covered Bonds & Gov. Bonds"
-FB_graph_title = "Government Bonds Interest Rates"
+FB_graph_title = "German Government Bonds Interest Rates"
 CB_graph_title = "Covered Bonds Interest Rates"
 
 # Set legend title
@@ -57,26 +79,23 @@ FB_show_zero_line = True
 CB_show_zero_line = True
 
 # Set source of data
-YS_source_text = "Quelle: Svensson Parameter Bundesbank"
-FB_source_text = "Quelle: Svensson Parameter Bundesbank"
-CB_source_text = "Quelle: Svensson Parameter Bundesbank"
-
-# CSV File suffix (Is part of csv file name)
-YS_csv_suffix = "2023_12_10"
-FB_csv_suffix = "2023_12_10"
-CB_csv_suffix = "2023_12_10"
+YS_source_text = "Source: Svensson Parameter Bundesbank"
+FB_source_text = "Source: Svensson Parameter Bundesbank"
+CB_source_text = "Source: Svensson Parameter Bundesbank"
 
 file_path = "C:/Users/mauri/Desktop/Work/1) Current Employers/University of Tübingen (HIWI)/3) Liquidity Project/Liquidity_Project"
 
-##################################### Importing Packages #####################################
-import pandas as pd  #Used for variety of tasks
-import os #Used to change directory
-import seaborn as sns #Used to create lineplot
-import matplotlib.pyplot as plt #Used to edit plot
-
+##################################### Changing Working Directory #####################################
 #Changing Working Directory
 os.chdir(file_path)
 
+##################################### Verifying Directory Exists #####################################
+# Ensure that the "Figures" directory exists
+figures_directory = "Figures"
+
+if not os.path.exists(figures_directory):
+    os.makedirs(figures_directory)
+    
 ##################################### Importing Data #####################################
 
 #Import Data
@@ -86,7 +105,7 @@ covered_bonds = pd.read_csv(f"Clean_Data/ts_covered_bonds_{CB_csv_suffix}.csv") 
 
 ##################################### Visualizing Data #####################################
 
-def createPlot(showGraph, dataframe, start_date, end_date, maturity_list, y_label, x_label, graph_title, legend_title, number_of_x_ticks, show_zero_line, source_text):
+def createPlot(showGraph, dataframe, start_date, end_date, maturity_list, y_label, x_label, graph_title, legend_title, number_of_x_ticks, show_zero_line, source_text, export_graph, export_name):
     #Only show graph is this is wanted
     if showGraph:
         
@@ -128,11 +147,16 @@ def createPlot(showGraph, dataframe, start_date, end_date, maturity_list, y_labe
         plt.gcf().autofmt_xdate()
         
         #Set text for source of data
-        plt.gcf().text(0.2, 0, source_text, ha="center")
+        plt.gcf().text(0.2, 0.02, source_text, ha="center")
         
+        # Save the plot
+        if export_graph:
+            plt.savefig(os.path.join(figures_directory, export_name))
+    
         # Show the plot
         plt.show()
 
-createPlot(YS_show_graph, yield_spread, YS_start_date, YS_end_date, YS_maturity_list, YS_y_label, YS_x_label, YS_graph_title, YS_legend_title, YS_amount_x_ticks, YS_show_zero_line, YS_source_text) 
-createPlot(FB_show_graph, federal_bonds, FB_start_date, FB_end_date, FB_maturity_list, FB_y_label, FB_x_label, FB_graph_title, FB_legend_title, FB_amount_x_ticks, FB_show_zero_line, FB_source_text) 
-createPlot(CB_show_graph, covered_bonds, CB_start_date, CB_end_date, CB_maturity_list, CB_y_label, CB_x_label, CB_graph_title, CB_legend_title, CB_amount_x_ticks, CB_show_zero_line, CB_source_text) 
+createPlot(YS_show_graph, yield_spread, YS_start_date, YS_end_date, YS_maturity_list, YS_y_label, YS_x_label, YS_graph_title, YS_legend_title, YS_amount_x_ticks, YS_show_zero_line, YS_source_text, YS_export_png, YS_export_name) 
+createPlot(FB_show_graph, federal_bonds, FB_start_date, FB_end_date, FB_maturity_list, FB_y_label, FB_x_label, FB_graph_title, FB_legend_title, FB_amount_x_ticks, FB_show_zero_line, FB_source_text, FB_export_png, FB_export_name) 
+createPlot(CB_show_graph, covered_bonds, CB_start_date, CB_end_date, CB_maturity_list, CB_y_label, CB_x_label, CB_graph_title, CB_legend_title, CB_amount_x_ticks, CB_show_zero_line, CB_source_text, CB_export_png, CB_export_name) 
+

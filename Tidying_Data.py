@@ -10,29 +10,37 @@ from functools import reduce #Merge dataframes
 import math #Perform mathematical tasks
 from datetime import datetime #Add current time as suffix to exported data
 
+##################################### Changing Working Directory #####################################
 #Changing Working Directory
 os.chdir(file_path)
 
+##################################### Verifying Directory Exists #####################################
+# Ensure that the "Figures" directory exists
+output_directory = "Clean_Data"
+
+if not os.path.exists(output_directory):
+    os.makedirs(output_directory)
+    
 ##################################### Importing & Tidying Data #####################################
 
-svensson_bonds_parameter_path = "Raw_Data"
-svensson_covered_parameter_path = "Raw_Data"
+svensson_parameters_prefix = "https://api.statistiken.bundesbank.de/rest/download/BBSIS/"
+svensson_parameters_suffix = "?format=csv&lang=de"
 
 #Importing Federal Bonds
-bonds_beta_0 = pd.read_csv(f"{svensson_bonds_parameter_path}/BBSIS.D.I.ZST.B0.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-bonds_beta_1 = pd.read_csv(f"{svensson_bonds_parameter_path}/BBSIS.D.I.ZST.B1.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 1
-bonds_beta_2 = pd.read_csv(f"{svensson_bonds_parameter_path}/BBSIS.D.I.ZST.B2.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 2
-bonds_beta_3 = pd.read_csv(f"{svensson_bonds_parameter_path}/BBSIS.D.I.ZST.B3.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 3
-bonds_tau_1 = pd.read_csv(f"{svensson_bonds_parameter_path}/BBSIS.D.I.ZST.T1.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Tau 1
-bonds_tau_2 = pd.read_csv(f"{svensson_bonds_parameter_path}/BBSIS.D.I.ZST.T2.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Tau 2
+bonds_beta_0 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B0.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+bonds_beta_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B1.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+bonds_beta_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B2.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+bonds_beta_3 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B3.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+bonds_tau_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T1.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+bonds_tau_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T2.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
 
 #Importing Covered Bonds
-covered_beta_0 = pd.read_csv(f"{svensson_covered_parameter_path}/BBSIS.D.I.ZST.B0.EUR.S122.B.A100._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-covered_beta_1 = pd.read_csv(f"{svensson_covered_parameter_path}/BBSIS.D.I.ZST.B1.EUR.S122.B.A100._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 1
-covered_beta_2 = pd.read_csv(f"{svensson_covered_parameter_path}/BBSIS.D.I.ZST.B2.EUR.S122.B.A100._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 2
-covered_beta_3 = pd.read_csv(f"{svensson_covered_parameter_path}/BBSIS.D.I.ZST.B3.EUR.S122.B.A100._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 3
-covered_tau_1 = pd.read_csv(f"{svensson_covered_parameter_path}/BBSIS.D.I.ZST.T1.EUR.S122.B.A100._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Tau 1
-covered_tau_2 = pd.read_csv(f"{svensson_covered_parameter_path}/BBSIS.D.I.ZST.T2.EUR.S122.B.A100._Z.R.A.A._Z._Z.A.csv", sep=";", skiprows=range(1, 10), na_values=".") #Importing Tau 2
+covered_beta_0 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B0.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+covered_beta_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B1.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+covered_beta_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B2.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+covered_beta_3 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B3.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+covered_tau_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T1.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+covered_tau_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T2.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
 
 parameter_dataframe_list = [[bonds_beta_0, bonds_beta_1, bonds_beta_2, bonds_beta_3, bonds_tau_1, bonds_tau_2], 
                             [covered_beta_0, covered_beta_1, covered_beta_2, covered_beta_3, covered_tau_1, covered_tau_2]]
@@ -142,10 +150,10 @@ for maturity in range(1, T + 1):
 current_datetime = datetime.now().strftime('%Y_%m_%d')
 
 #Exporting Svensson Parameters
-federal_bonds_svensson_parameters.to_csv(f"Clean_Data/ts_federal_bonds_svensson_parameters_{current_datetime}.csv", index=False)
-covered_bonds_svensson_parameters.to_csv(f"Clean_Data/ts_covered_bonds_svensson_parameters_{current_datetime}.csv", index=False)
+federal_bonds_svensson_parameters.to_csv(os.path.join(output_directory, f"ts_federal_bonds_svensson_parameters_{current_datetime}.csv"), index=False)
+covered_bonds_svensson_parameters.to_csv(os.path.join(output_directory, f"ts_covered_bonds_svensson_parameters_{current_datetime}.csv"), index=False)
 
 #Exporting Interest Rates and Yield Spreads
-federal_bonds.to_csv(f"Clean_Data/ts_federal_bonds_{current_datetime}.csv", index=False)
-covered_bonds.to_csv(f"Clean_Data/ts_covered_bonds_{current_datetime}.csv", index=False)
-yield_spread.to_csv(f"Clean_Data/ts_yield_spread_{current_datetime}.csv", index=False)
+federal_bonds.to_csv(os.path.join(output_directory, f"ts_federal_bonds_{current_datetime}.csv"), index=False)
+covered_bonds.to_csv(os.path.join(output_directory, f"ts_covered_bonds_{current_datetime}.csv"), index=False)
+yield_spread.to_csv(os.path.join(output_directory, f"ts_yield_spread_{current_datetime}.csv"), index=False)
