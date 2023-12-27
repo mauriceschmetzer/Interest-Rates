@@ -177,7 +177,8 @@ This code can generate three PNG files. These are visualizations of the time ser
 
 Here is an example of a graph that was generated with this code. It shows the time series of interest rates for German Government bonds with maturities of 1 year, 5 years, and 10 years in basis points. 
 
-![Time Series of interest rates for German Government bonds with maturities 1, 5, and 10 years.](https://drive.google.com/file/d/1_OZNqQbO0StkctRKtcy2iYKnxV8GzAaD/view?usp=sharing)
+![Time Series of interest rates for German Government bonds with maturities 1, 5, and 10 years.](https://github.com/mauriceschmetzer/Liquidity-Premium/assets/12885289/4c294ed4-d174-4ee7-a193-7eb4179a2ed0)
+
 
 ## Visualizing Term Structure of Interest Rates
 
