@@ -175,6 +175,10 @@ file_path = "C:/Users/..."
 
 This code can generate three PNG files. These are visualizations of the time series of interest rates for German Government Bonds, Covered Bonds, and the respective yield spread between the two types of bonds. 
 
+Here is an example of a graph that was generated with this code. It shows the time series of interest rates for German Government bonds with maturities of 1 year, 5 years, and 10 years in basis points. 
+
+![Time Series of interest rates for German Government bonds with maturities 1, 5, and 10 years.](https://drive.google.com/file/d/1_OZNqQbO0StkctRKtcy2iYKnxV8GzAaD/view?usp=sharing)
+
 ## Visualizing Term Structure of Interest Rates
 
 ### File Objectives:
