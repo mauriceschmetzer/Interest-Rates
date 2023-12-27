@@ -1,4 +1,4 @@
-# LiquidityPremium
+# Liquidity Premium
 
 > [!NOTE]
 > There are three Python code files. You can find instructions on how to use them below.
@@ -176,11 +176,137 @@ file_path = "C:/Users/..."
 This code can generate three PNG files. These are visualizations of the time series of interest rates for German Government Bonds, Covered Bonds, and the respective yield spread between the two types of bonds. 
 
 ## Visualizing Term Structure of Interest Rates
-With this Python code, you can:
+
+### File Objectives:
 
 - Calculate interest rates for German government bonds and covered bonds using Svensson Parameters published by the German Federal Bank. 
-- Calculate the yield spread between interest rates of German government bonds and covered bonds 
-- Visualize time series of interest rates for German government bonds and covered bonds 
-- Visualize the term structure of interest rates
+- Calculate the yield spread between interest rates of German government bonds and covered bonds.
+- Visualize the time series of interest rates for German government bonds and covered bonds. 
+- Visualize the term structure of interest rates.
 
+### Settings:
 
+The settings always follow the same structure! The first two letters of a setting are capitalized and indicate what visualization is affected by it.
+The following abbreviations are used:
+
+    - YS = Yield Spread
+    - FB = German Federal Government Bonds
+    - CB = Covered Bonds
+
+Use this setting to indicate what date ending your CSV input files have (Ref. Output of Tidying Data Code)
+For example *YS_csv_suffix = "2023_12_25"* will read the file *ts_federal_bonds_2023_12_25.csv* as input file.
+
+```
+YS_csv_suffix = "2023_12_25"
+FB_csv_suffix = "2023_12_25"
+CB_csv_suffix = "2023_12_25"
+```
+
+Decide if you want to show the graphs. For example, *YS_show_graph = False* will prevent the code from attempting to generate a time series graph of the yield spread.
+
+```
+YS_show_graph = False
+FB_show_graph = True
+CB_show_graph = True
+```
+
+Decide if you want to export graphs as PNG to the figures folder. If the folder doesn't exist, it will be generated automatically. 
+
+```
+YS_export_png = True
+FB_export_png = True
+CB_export_png = True
+```
+
+Set an export name for the graph
+
+```
+YS_export_name = "YS_Term_Structure_" + datetime.today().strftime('%Y_%m_%d') + ".png"
+FB_export_name = "FB_Term_Structure_" + datetime.today().strftime('%Y_%m_%d') + ".png"
+CB_export_name = "CB_Term_Structure_" + datetime.today().strftime('%Y_%m_%d') + ".png"
+```
+
+Set the dates for which you would like to show the term structure. For example, a list of *["2009-12-01", "2022-12-01", "2023-12-01"]* will generate three lines showing the term structures for the respective dates in the list. 
+
+```
+YS_date = ["2009-12-01", "2022-12-01", "2023-12-01"]
+FB_date = ["2009-12-01", "2022-12-01", "2023-12-01"]
+CB_date = ["2009-12-01", "2022-12-01", "2023-12-01"]
+```
+
+Set a list of maturities that you would like to show on the graph for each term structure. For example, *YS_maturity_list = list(range(1, 31))* will generate a list of numbers from 1 to 30. This will generate a graph that shows 30 interest rates in basis points. 
+
+```
+# YS_maturity_list =  [1, 2, 3, 4, 5, 6, 7]
+YS_maturity_list = list(range(1, 31))
+# FB_maturity_list =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+FB_maturity_list = list(range(1, 31))
+# CB_maturity_list =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+CB_maturity_list = list(range(1, 31))
+```
+
+Set how many years you would like to see between two ticks on the x-axis. This allows you to modify the amount of dates shown on the x-axis. Here you don't set the amount of ticks but rather the distance between the ticks.
+
+```
+YS_show_every_nth_x_tick = 5
+FB_show_every_nth_x_tick = 5
+CB_show_every_nth_x_tick = 5
+```
+
+Set x-axis label
+
+```
+YS_x_label = "Number of Years"
+FB_x_label = "Number of Years"
+CB_x_label = "Number of Years"
+```
+
+Set y-axis label
+
+```
+YS_y_label = "Yield Spread [in bp]"
+FB_y_label = "Interest Rate [in bp]"
+CB_y_label = "Interest Rate [in bp]"
+```
+
+Set graph title
+
+```
+YS_graph_title = "Yield Spread Term Structure"
+FB_graph_title = "Government Bonds Term Structure"
+CB_graph_title = "Covered Bonds Term Structure"
+```
+
+Set legend title
+
+```
+YS_legend_title = "Date"
+FB_legend_title = "Date"
+CB_legend_title = "Date"
+```
+
+Decide if you want to show a zero line on the graph. If you set this to true, it will generate a dashed straight line for y = 0. 
+
+```
+YS_show_zero_line = False
+FB_show_zero_line = True
+CB_show_zero_line = True
+```
+
+Set source text of data. This will be printed in the bottom left part of the graph. 
+
+```
+YS_source_text = "Source: Svensson Parameter Bundesbank"
+FB_source_text = "Source: Svensson Parameter Bundesbank"
+CB_source_text = "Source: Svensson Parameter Bundesbank"
+```
+
+Set file path to the directory that includes the figures and data input folders */Figures* and */Clean_Data*. 
+
+```
+file_path = "C:/Users/..."
+```
+
+### Output:
+
+This code can generate three PNG files. These are visualizations of the term structure of interest rates for German Government Bonds, Covered Bonds, and the respective yield spread between the two types of bonds. 
