@@ -1,6 +1,9 @@
-##################################### Importing Bundeswertpapiere & Tidying Data #####################################
+##################################### Settings #####################################
 
-T = 10
+# Determine how many years of maturity you would like to calculate
+T = 50
+
+#Set file Path
 file_path = "C:/Users/mauri/Desktop/Work/1) Current Employers/University of Tübingen (HIWI)/3) Liquidity Project/Liquidity_Project" 
 
 ##################################### Importing Packages #####################################
@@ -28,19 +31,19 @@ svensson_parameters_suffix = "?format=csv&lang=de"
 
 #Importing Federal Bonds
 bonds_beta_0 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B0.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-bonds_beta_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B1.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-bonds_beta_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B2.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-bonds_beta_3 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B3.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-bonds_tau_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T1.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-bonds_tau_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T2.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+bonds_beta_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B1.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 1
+bonds_beta_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B2.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 2
+bonds_beta_3 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B3.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 3
+bonds_tau_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T1.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Tau 1
+bonds_tau_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T2.EUR.S1311.B.A604._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Tau 2
 
 #Importing Covered Bonds
 covered_beta_0 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B0.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-covered_beta_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B1.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-covered_beta_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B2.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-covered_beta_3 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B3.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-covered_tau_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T1.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
-covered_tau_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T2.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 0
+covered_beta_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B1.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 1
+covered_beta_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B2.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 2
+covered_beta_3 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.B3.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Beta 3
+covered_tau_1 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T1.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Tau 1
+covered_tau_2 = pd.read_csv(f"{svensson_parameters_prefix}D.I.ZST.T2.EUR.S122.B.A100._Z.R.A.A._Z._Z.A{svensson_parameters_suffix}", sep=";", skiprows=range(1, 10), na_values=".") #Importing Tau 2
 
 parameter_dataframe_list = [[bonds_beta_0, bonds_beta_1, bonds_beta_2, bonds_beta_3, bonds_tau_1, bonds_tau_2], 
                             [covered_beta_0, covered_beta_1, covered_beta_2, covered_beta_3, covered_tau_1, covered_tau_2]]

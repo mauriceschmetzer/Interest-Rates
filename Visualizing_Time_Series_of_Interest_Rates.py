@@ -14,9 +14,9 @@ from datetime import datetime
     # CB = Covered Bonds
     
 # CSV File suffix (Is part of csv file name)
-YS_csv_suffix = "2023_12_17"
-FB_csv_suffix = "2023_12_17"
-CB_csv_suffix = "2023_12_17"    
+YS_csv_suffix = "2023_12_25"
+FB_csv_suffix = "2023_12_25"
+CB_csv_suffix = "2023_12_25"    
 
 # Decide if you want to show the graphs
 YS_show_graph = True
@@ -29,9 +29,9 @@ FB_export_png = True
 CB_export_png = True
 
 #Set export name for graph
-YS_export_name = "YS_" + datetime.today().strftime('%Y_%m_%d') + ".png"
-FB_export_name = "FB_" + datetime.today().strftime('%Y_%m_%d') + ".png"
-CB_export_name = "CB_" + datetime.today().strftime('%Y_%m_%d') + ".png"
+YS_export_name = "YS_Time_Series" + datetime.today().strftime('%Y_%m_%d') + ".png"
+FB_export_name = "FB_Time_Series" + datetime.today().strftime('%Y_%m_%d') + ".png"
+CB_export_name = "CB_Time_Series" + datetime.today().strftime('%Y_%m_%d') + ".png"
 
 # Start date on graph
 YS_start_date = "2009-01-01"
@@ -99,9 +99,10 @@ if not os.path.exists(figures_directory):
 ##################################### Importing Data #####################################
 
 #Import Data
-yield_spread = pd.read_csv(f"Clean_Data/ts_yield_spread_{YS_csv_suffix}.csv") #Importing Federal Bonds Data
-federal_bonds = pd.read_csv(f"Clean_Data/ts_federal_bonds_{FB_csv_suffix}.csv") #Importing Federal Bonds Data
-covered_bonds = pd.read_csv(f"Clean_Data/ts_covered_bonds_{CB_csv_suffix}.csv") #Importing Federal Bonds Data
+yield_spread = pd.read_csv(f"Clean_Data/ts_yield_spread_{YS_csv_suffix}.csv") # Importing Yield Spread Data
+federal_bonds = pd.read_csv(f"Clean_Data/ts_federal_bonds_{FB_csv_suffix}.csv") # Importing Federal Bonds Data
+covered_bonds = pd.read_csv(f"Clean_Data/ts_covered_bonds_{CB_csv_suffix}.csv") # Importing Covered Bonds Data
+
 
 ##################################### Visualizing Data #####################################
 
@@ -133,6 +134,7 @@ def createPlot(showGraph, dataframe, start_date, end_date, maturity_list, y_labe
                    title=legend_title, #Sets legend title
                    frameon=False) #Removes edge of legend box
       
+        #Set Amount of ticks on x-axis
         x_ticks = subsetted_data["Date"].unique()[::len(subsetted_data["Date"].unique()) // number_of_x_ticks]
         plt.xticks(x_ticks, [date.strftime('%m/%Y') for date in pd.to_datetime(x_ticks)])
         
@@ -155,6 +157,8 @@ def createPlot(showGraph, dataframe, start_date, end_date, maturity_list, y_labe
     
         # Show the plot
         plt.show()
+
+##################################### Executing functions #####################################
 
 createPlot(YS_show_graph, yield_spread, YS_start_date, YS_end_date, YS_maturity_list, YS_y_label, YS_x_label, YS_graph_title, YS_legend_title, YS_amount_x_ticks, YS_show_zero_line, YS_source_text, YS_export_png, YS_export_name) 
 createPlot(FB_show_graph, federal_bonds, FB_start_date, FB_end_date, FB_maturity_list, FB_y_label, FB_x_label, FB_graph_title, FB_legend_title, FB_amount_x_ticks, FB_show_zero_line, FB_source_text, FB_export_png, FB_export_name) 
