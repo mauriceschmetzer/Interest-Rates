@@ -1,13 +1,17 @@
-# Liquidity Premium
+# Calculating & Visualizing Interest Rates
 
 > [!NOTE]
-> There are three Python code files. You can find instructions on how to use them below.
+> There are three Python code files. You can find instructions on how to use them in the sections below.
+
+1. Tidying data
+2. Visualizing time series of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity.
+3. Visualizing the term structure of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity.
 
 ## Tidying Data
 
 ### File Objectives:
 
-- Imports Svensson Parameters published by the German Federal Bank (GFB) using the GFB API.
+- Imports Svensson Parameters published by the [German Federal Bank (GFB)](https://www.bundesbank.de/dynamic/action/de/statistiken/zeitreihen-datenbanken/zeitreihen-datenbank/723444/723444?treeAnchor=GELD&statisticType=BBK_ITS) using the GFB API.
 - Calculates interest rates for any desired maturity for German government bonds and covered bonds in basis points.
 - Calculates the yield spread for any desired maturity between German government bonds and covered bonds in basis points. 
 
@@ -173,12 +177,11 @@ file_path = "C:/Users/..."
 
 ### Output:
 
-This code can generate three PNG files. These are visualizations of the time series of interest rates for German Government Bonds, Covered Bonds, and the respective yield spread between the two types of bonds. 
+This code can generate three PNG files. These are visualizations of the time series of interest rates for German government bonds, covered bonds, and the respective yield spread between the two types of bonds. 
 
-Here is an example of a graph that was generated with this code. It shows the time series of interest rates for German Government bonds with maturities of 1 year, 5 years, and 10 years in basis points. 
+Here is an example of a graph that was generated with this code. It shows the time series of interest rates for German government bonds with maturities of 1 year, 5 years, and 10 years in basis points. 
 
-![Time Series of interest rates for German Government bonds with maturities 1, 5, and 10 years.](https://github.com/mauriceschmetzer/Liquidity-Premium/assets/12885289/4c294ed4-d174-4ee7-a193-7eb4179a2ed0)
-
+![Time series of interest rates for German government bonds with maturities 1, 5, and 10 years.](https://github.com/mauriceschmetzer/Liquidity-Premium/assets/12885289/4c294ed4-d174-4ee7-a193-7eb4179a2ed0)
 
 ## Visualizing Term Structure of Interest Rates
 
@@ -315,3 +318,7 @@ file_path = "C:/Users/..."
 ### Output:
 
 This code can generate three PNG files. These are visualizations of the term structure of interest rates for German Government Bonds, Covered Bonds, and the respective yield spread between the two types of bonds. 
+
+Here is an example of a graph that was generated with this code. It shows the term structure of interest rates for maturities of 1 to 30 years on three different dates.
+
+![Term structure of interest rates for German government bonds with maturities of 1 to 30 years on three different dates](https://github.com/mauriceschmetzer/Liquidity-Premium/assets/12885289/0be613bc-b85d-4dc8-9707-1cb0dd046d8e)
