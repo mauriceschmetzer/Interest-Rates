@@ -7,7 +7,7 @@
 2. Visualizing time series of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity.
 3. Visualizing the term structure of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity.
 
-## Tidying Data
+## 1. Tidying Data
 
 ### File Objectives:
 
@@ -44,7 +44,7 @@ The column structure is always the same. 0_Y_1 refers to 1-year maturity, 0_Y_2 
 
 The files will be saved in the folder */Clean_Data*. This folder is automatically generated if it doesn't exist. 
 
-## Visualizing Time Series of Interest Rates
+## 2. Visualizing Time Series of Interest Rates
 
 ### File Objectives:
 
@@ -183,7 +183,7 @@ Here is an example of a graph that was generated with this code. It shows the ti
 
 ![Time series of interest rates for German government bonds with maturities 1, 5, and 10 years.](https://github.com/mauriceschmetzer/Liquidity-Premium/assets/12885289/4c294ed4-d174-4ee7-a193-7eb4179a2ed0)
 
-## Visualizing Term Structure of Interest Rates
+## 3. Visualizing Term Structure of Interest Rates
 
 ### File Objectives:
 
