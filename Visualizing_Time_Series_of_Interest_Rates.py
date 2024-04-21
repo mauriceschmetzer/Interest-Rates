@@ -12,15 +12,15 @@ from datetime import datetime
     # YS = Yield Spread
     # FB = Federal Bonds
     # CB = Covered Bonds
-    # SY = Second Y-Axis
+    # SY = Second Y-Axis Data (Here as an Example: VDAX)
     
 ### 1) Settings - 1st Y-Axis
     
 # CSV File name
 
-YS_file_name = "ts_yield_spread_2024_04_20.csv"
-FB_file_name = "ts_federal_bonds_2024_04_20.csv"
-CB_file_name = "ts_covered_bonds_2024_04_20.csv"
+YS_file_name = "ts_yield_spread_2024_04_21.csv"
+FB_file_name = "ts_federal_bonds_2024_04_21.csv"
+CB_file_name = "ts_covered_bonds_2024_04_21.csv"
 
 # Decide if you want to show the graphs
 YS_show_graph = True
@@ -53,9 +53,9 @@ FB_end_date = "2024-04-19"
 CB_end_date = "2024-04-19"
 
 # Set list of maturities that you would like to show on the graph (first y-axis)
-YS_maturity_list =  [5]
-FB_maturity_list =  [1, 5]
-CB_maturity_list =  [1, 5]
+YS_maturity_list =  [1]
+FB_maturity_list =  [1, 5, 10]
+CB_maturity_list =  [1, 5, 10]
 
 # Set column name for data for x-axis
 YS_x = "Date"
@@ -108,10 +108,11 @@ FY_folder_path = "Clean_Data/"
 
 SY_show_on_graph = True # Decide if you want to add a second y-axis
 SY_folder_path = "Clean_data/" # Set file path for values on second y-axis
-SY_file_name = "VDAX.csv" #Set file name for values on second y-axis
-SY_y = "Price" #Set column name for data for second y-axis
-SY_x = "Date" #Set column name for data for x-axis
+SY_file_name = "VDAX.csv" #Set file name for values on the second y-axis
+SY_y = "Price" #Set column name for data for the second y-axis
+SY_x = "Date" #Set column name for data for the x-axis
 SY_y_label = "VDAX" #Set second y-axis label
+SY_legend_label = "VDAX" #Set the label that is shown in the legend on the right
 
 
 ##################################### Changing Working Directory #####################################
@@ -162,6 +163,7 @@ def createPlot(showGraph, #Boolean indicating if you want to generate & show a g
                fy_y_label, #Label for first y-axis 
                sy_y_label, #Label for second y-axis
                x_label, #Label for x-axis
+               sy_label_legend, #Legend label for second y-axis values shown in legend.
                
                graph_title, #Title of graph
                legend_title,  #Title of legend
@@ -200,7 +202,7 @@ def createPlot(showGraph, #Boolean indicating if you want to generate & show a g
         
         # Generates colorblind color palette with enough colors for each maturity + 1 for values on second y-axis
         color_palette = sns.color_palette("colorblind", len(maturity_list) + 1)
-        
+                
         ######## Line - Plots ########
         
         #In order to be able to show both y-axis legends on the same legend table, we create:
@@ -211,16 +213,17 @@ def createPlot(showGraph, #Boolean indicating if you want to generate & show a g
         for i, maturity in enumerate(maturity_list):
             #Placed on first y-axis (left). The colors are taken from the above created color palette. 
             line = sns.lineplot(y=f"0_Y_{maturity}", x=fy_x_value, data=subsetted_fy_data, color=color_palette[i], ax=ax1)
-            
-            lines.append(line.lines[0]) #Adds the current line plot to the list of line plots
+                 
+            lines.append(line.lines[i]) #Adds the current line plot to the list of line plots
             labels.append(f"{maturity}y") #Adds the label of the current line plot to the list of labels
     
         #Creates a lineplot for the data on the second y-axis (right). Uses -1 to get the color from the above created color palette
         
         if sy_show_graph:
             line = sns.lineplot(y=sy_y_value, x=sy_x_value, data=subsetted_sy_data, color=color_palette[-1], ax=ax2)
+            
             lines.append(line.lines[0]) #Adds the current line plot to the list of line plots
-            labels.append("VDAX") #Adds the label of the current line plot to the list of labels
+            labels.append(sy_label_legend) #Adds the label of the current line plot to the list of labels
         
         ######## Labels, Title, Legend ########
         
@@ -267,8 +270,8 @@ def createPlot(showGraph, #Boolean indicating if you want to generate & show a g
 
 ##################################### Executing functions #####################################
 
-createPlot(YS_show_graph, SY_show_on_graph, YS_graph_resolution, yield_spread, second_y_axis_data , YS_start_date, YS_end_date, YS_maturity_list, SY_y, YS_x, SY_x, YS_y_label, SY_y_label, YS_x_label, YS_graph_title, YS_legend_title, YS_amount_x_ticks, YS_show_zero_line, YS_source_text, YS_export_png, YS_export_name) 
+createPlot(YS_show_graph, SY_show_on_graph, YS_graph_resolution, yield_spread, second_y_axis_data , YS_start_date, YS_end_date, YS_maturity_list, SY_y, YS_x, SY_x, YS_y_label, SY_y_label, YS_x_label, SY_legend_label, YS_graph_title, YS_legend_title, YS_amount_x_ticks, YS_show_zero_line, YS_source_text, YS_export_png, YS_export_name) 
 
 #Don't want to show second y-axis for covered bonds and federal bonds
-createPlot(FB_show_graph, False, FB_graph_resolution, federal_bonds, second_y_axis_data , FB_start_date, FB_end_date, FB_maturity_list, SY_y, FB_x, SY_x, FB_y_label, SY_y_label, FB_x_label, FB_graph_title, FB_legend_title, FB_amount_x_ticks, FB_show_zero_line, FB_source_text, FB_export_png, FB_export_name) 
-createPlot(CB_show_graph, False, CB_graph_resolution, covered_bonds, second_y_axis_data , CB_start_date, CB_end_date, CB_maturity_list, SY_y, CB_x, SY_x, CB_y_label, CB_y_label, CB_x_label, CB_graph_title, CB_legend_title, CB_amount_x_ticks, CB_show_zero_line, CB_source_text, CB_export_png, CB_export_name) 
+createPlot(FB_show_graph, False, FB_graph_resolution, federal_bonds, second_y_axis_data , FB_start_date, FB_end_date, FB_maturity_list, SY_y, FB_x, SY_x, FB_y_label, SY_y_label, FB_x_label, SY_legend_label, FB_graph_title, FB_legend_title, FB_amount_x_ticks, FB_show_zero_line, FB_source_text, FB_export_png, FB_export_name) 
+createPlot(CB_show_graph, False, CB_graph_resolution, covered_bonds, second_y_axis_data , CB_start_date, CB_end_date, CB_maturity_list, SY_y, CB_x, SY_x, CB_y_label, CB_y_label, CB_x_label, SY_legend_label, CB_graph_title, CB_legend_title, CB_amount_x_ticks, CB_show_zero_line, CB_source_text, CB_export_png, CB_export_name) 
