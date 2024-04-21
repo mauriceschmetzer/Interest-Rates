@@ -65,7 +65,7 @@ There are two subsections of settings.
 1) The first subsection lists all settings for the data shown on the first y-axis (left) and general settings.
 2) The second subsection lists all settings for the data shown on the second y-axis (right). 
 
-1) First Subsection (First Y-Axis & General Settings)
+_First Subsection (First Y-Axis & General Settings)_
    
 Use this setting to define the filenames.
 ```
@@ -205,7 +205,7 @@ Set the folder path for the data that is imported for the first y-axis (left)
 FY_folder_path = "Clean_Data/"
 ```
 
-2) Second Subsection (Second Y-Axis)
+_Second Subsection (Second Y-Axis)_
 
 Decide if you want to add a second y-axis (right)
 
