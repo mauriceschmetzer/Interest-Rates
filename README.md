@@ -243,13 +243,20 @@ Set the second y-axis label
 SY_y_label = "VDAX"
 ```
 
+Set the label that is shown in the legend on the right
+
+```
+SY_legend_label = "VDAX"
+```
+
+
 ### Output:
 
 This code can generate three PNG files. These are visualizations of the time series of interest rates for German government bonds, covered bonds, and the respective yield spread between the two types of bonds. 
 
 Here is an example of a graph that was generated with this code. It shows the time series of interest rates for German government bonds with maturities of 1 year, 5 years, and 10 years in basis points. 
 
-![Time series of interest rates for German government bonds with maturities 1, 5, and 10 years.](https://github.com/mauriceschmetzer/Liquidity-Premium/assets/12885289/4c294ed4-d174-4ee7-a193-7eb4179a2ed0)
+![Time series of interest rates for German government bonds with maturities 1, 5, and 10 years.](https://github.com/mauriceschmetzer/Interest-Rates/blob/main/Figures/FB_Time_Series_2024_04_21.png)
 
 Here is an example of another graph that was generated with this code. It shows the yield spread between covered bonds & German government bonds compared to the VDAX. 
 
@@ -392,4 +399,4 @@ This code can generate three PNG files. These are visualizations of the term str
 
 Here is an example of a graph that was generated with this code. It shows the term structure of interest rates for maturities of 1 to 30 years on three different dates.
 
-![Term structure of interest rates for German government bonds with maturities of 1 to 30 years on three different dates](https://github.com/mauriceschmetzer/Liquidity-Premium/assets/12885289/0be613bc-b85d-4dc8-9707-1cb0dd046d8e)
+![Term structure of interest rates for German government bonds with maturities of 1 to 30 years on three different dates](https://github.com/mauriceschmetzer/Interest-Rates/blob/main/Figures/FB_Term_Structure_2024_04_21.png)
