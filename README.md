@@ -256,10 +256,11 @@ This code can generate three PNG files. These are visualizations of the time ser
 
 Here is an example of a graph that was generated with this code. It shows the time series of interest rates for German government bonds with maturities of 1 year, 5 years, and 10 years in basis points. 
 
-![Time series of interest rates for German government bonds with maturities 1, 5, and 10 years.](https://github.com/mauriceschmetzer/Interest-Rates/blob/main/Figures/FB_Time_Series_2024_04_21.png)
+![Time series of interest rates for German government bonds with maturities 1, 5, and 10 years.](https://github.com/mauriceschmetzer/Interest-Rates/blob/main/Figures/FB_Time_Series_2024_04_20.png)
 
 Here is an example of another graph that was generated with this code. It shows the yield spread between covered bonds & German government bonds compared to the VDAX. 
 
+![Time series of yield spread between German government bonds and covered bonds with maturity of 5 years compared to VDAX](https://github.com/mauriceschmetzer/Interest-Rates/blob/main/Figures/YS_Time_Series_2024_04_21%20(With%20VDAX).png)
 
 ## 3. Visualizing Term Structure of Interest Rates
 
