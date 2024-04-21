@@ -65,7 +65,7 @@ There are two subsections of settings.
 1) The first subsection lists all settings for the data shown on the first y-axis (left) and general settings.
 2) The second subsection lists all settings for the data shown on the second y-axis (right). 
 
-_First Subsection (First Y-Axis & General Settings)_
+_ First Subsection (First Y-Axis & General Settings) _
    
 Use this setting to define the filenames.
 ```
