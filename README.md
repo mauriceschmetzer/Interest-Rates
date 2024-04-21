@@ -116,9 +116,11 @@ CB_start_date = "2009-01-01"
 
 This will set the last date that is shown on the graph.
 
+```
 YS_end_date = "2022-01-30"
 FB_end_date = "2022-01-30"
 CB_end_date = "2022-01-30"
+```
 
 This list should include all maturities that you would like to show on the graph (First y-axis). You can only visualize the maturities that the Tidying code has generated.
 A list of *[1, 5, 10]* will generate three lines with 1, 5, and 10-year maturity. 
