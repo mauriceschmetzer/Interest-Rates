@@ -15,9 +15,9 @@ from datetime import datetime
 # CB = Covered Bonds
 
 # CSV File suffix (Is part of csv file name)
-YS_csv_suffix = "2023_12_25"
-FB_csv_suffix = "2023_12_25"
-CB_csv_suffix = "2023_12_25"
+YS_csv_suffix = "2024_04_26"
+FB_csv_suffix = "2024_04_26"
+CB_csv_suffix = "2024_04_26"
 
 # Decide if you want to show the graphs
 YS_show_graph = False
@@ -35,9 +35,10 @@ FB_export_name = "FB_Term_Structure_" + datetime.today().strftime('%Y_%m_%d') + 
 CB_export_name = "CB_Term_Structure_" + datetime.today().strftime('%Y_%m_%d') + ".png"
 
 # Set the dates for which you would like to show the term structure
-YS_date = ["2009-12-01", "2022-12-01", "2023-12-01", "2014-12-01"]
-FB_date = ["2009-12-01", "2022-12-01", "2023-12-01", "2014-12-01"]
-CB_date = ["2009-12-01", "2022-12-01", "2023-12-01", "2014-12-01"]
+# Format YYYY-MM-DD
+YS_date = ["2009-12-01", "2022-12-01", "2024-04-02"]
+FB_date = ["2009-12-01", "2022-12-01", "2024-04-02"]
+CB_date = ["2009-12-01", "2022-12-01", "2024-04-02"]
 
 # Set list of maturities that you would like to show on the graph
 # YS_maturity_list =  [1, 2, 3, 4, 5, 6, 7]
@@ -82,7 +83,8 @@ YS_source_text = "Source: Svensson Parameter Bundesbank"
 FB_source_text = "Source: Svensson Parameter Bundesbank"
 CB_source_text = "Source: Svensson Parameter Bundesbank"
 
-file_path = "C:/Users/mauri/Desktop/Work/1) Current Employers/University of Tübingen (HIWI)/3) Liquidity Project/Liquidity_Project"
+file_path = "C:/Users/mauri/Desktop/Work/1) Current Employers/University of Tübingen (HIWI)/Department of Finance/3) Liquidity Project/Liquidity_Project" 
+#file_path = r'C:\Users\Tobias\OneDrive - UT Cloud\02 Forschung\06 Asset Allocation\hiwis\Interest-Rates'
 
 ##################################### Changing Working Directory #####################################
 # Changing Working Directory
@@ -144,7 +146,7 @@ def createPlot(showGraph, dataframe, y_label, x_label, graph_title, legend_title
     if showGraph:
 
         # Set the figure size and resolution
-        plt.figure(figsize=(14, 6), dpi=300)
+        plt.figure(figsize=(14, 6), dpi=1000)
 
         # Plotting with Seaborn
         sns.set(style="ticks")  # Set the style of the plot

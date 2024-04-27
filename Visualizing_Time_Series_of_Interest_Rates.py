@@ -18,9 +18,9 @@ from datetime import datetime
     
 # CSV File name
 
-YS_file_name = "ts_yield_spread_2024_04_21.csv"
-FB_file_name = "ts_federal_bonds_2024_04_21.csv"
-CB_file_name = "ts_covered_bonds_2024_04_21.csv"
+YS_file_name = "ts_yield_spread_2024_04_26.csv"
+FB_file_name = "ts_federal_bonds_2024_04_26.csv"
+CB_file_name = "ts_covered_bonds_2024_04_26.csv"
 
 # Decide if you want to show the graphs
 YS_show_graph = True
@@ -99,6 +99,7 @@ CB_source_text = "Source: Svensson Parameter Bundesbank"
 
 # Set file path for main folder of data for first y-axis
 file_path = "C:/Users/mauri/Desktop/Work/1) Current Employers/University of Tübingen (HIWI)/Department of Finance/3) Liquidity Project/Liquidity_Project" 
+#file_path = r'C:\Users\Tobias\OneDrive - UT Cloud\02 Forschung\06 Asset Allocation\hiwis\Interest-Rates'
 
 #Set folder path for data to be imported for first y-axis.
 #This is a path starting from the location of "file_path".
