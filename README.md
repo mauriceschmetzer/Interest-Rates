@@ -1,13 +1,15 @@
 # Calculating & Visualizing Interest Rates
 
 > [!NOTE]
-> There are three Python code files. You can find instructions on how to use them in the sections below.
+> There are five Python code files. You can find instructions on how to use them in the sections below.
 
-1. Tidying data
-2. Visualizing time series of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity (With possibility to compare data with any other time series on second y-axis).
-3. Visualizing the term structure of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity.
+1. Calculating interest rates
+2. Calculating bond prices
+3. Visualizing time series of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity (With possibility to compare data with any other time series on second y-axis).
+4. Visualizing the term structure of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity.
+5. Visualizing time series of bond prices for German government bonds and covered bonds.
 
-## 1. Tidying Data
+## 1. Calculating Interest Rates
 
 ### File Objectives:
 
@@ -44,7 +46,49 @@ The column structure is always the same. 0_Y_1 refers to 1-year maturity, 0_Y_2 
 
 The files will be saved in the folder */Clean_Data*. This folder is automatically generated if it doesn't exist. 
 
-## 2. Visualizing Time Series of Interest Rates
+## 2. Calculating Bond Prices
+
+- Imports Svensson Parameters as calculated by the python code "Calculating Interest Rates"
+- Calculates yield to maturity for each day during set time period based on shrinking time to maturity. 
+- Calculates bond price based on previously calculated yield to maturity and time to maturity
+
+### Settings:
+
+Determine what date the bond was listed & on what date the bond matures. 
+Format YYYY-MM-DD
+
+```
+Start_Date = "2022-01-01"
+End_Date = "2024-03-28"
+```
+
+Set your file path. This is where your output will be exported to. You don't need to create any output folders as this is done automatically. 
+
+```
+file_path = "C:/Users/..." 
+```
+
+This is a path starting from the location of "file_path".
+
+```
+folder_path = "Clean_Data/"
+```
+
+CSV File name for the svensson parameters
+
+```
+svensson_parameter_file_name = "ts_federal_bonds_svensson_parameters_2024_04_26.csv"
+```
+
+Set the prefix value of the file that is exported.
+
+```
+export_file_name_prefix = "ts_federal_bond_price_"
+```
+
+### Output:
+
+## 3. Visualizing Time Series of Interest Rates
 
 ### File Objectives:
 
@@ -264,7 +308,7 @@ Here is an example of another graph that was generated with this code. It shows 
 
 ![Time series of yield spread between German government bonds and covered bonds with maturity of 5 years compared to VDAX](https://github.com/mauriceschmetzer/Interest-Rates/blob/main/Figures/YS_Time_Series_2024_04_21%20(With%20VDAX).png)
 
-## 3. Visualizing Term Structure of Interest Rates
+## 4. Visualizing Term Structure of Interest Rates
 
 ### File Objectives:
 
@@ -403,3 +447,139 @@ This code can generate three PNG files. These are visualizations of the term str
 Here is an example of a graph that was generated with this code. It shows the term structure of interest rates for maturities of 1 to 30 years on three different dates.
 
 ![Term structure of interest rates for German government bonds with maturities of 1 to 30 years on three different dates](https://github.com/mauriceschmetzer/Interest-Rates/blob/main/Figures/FB_Term_Structure_2024_04_21.png)
+
+## 5. Visualizing Time Series of Bond Prices
+
+### File Objectives:
+
+- Visualizes the time series of bond prices
+
+### Settings:
+
+
+Use this setting to define the filenames.
+
+
+```
+file_name = "ts_federal_bond_price_2024_04_27.csv"
+```
+
+Decide if you want to show the graph.
+
+```
+show_graph = True
+```
+
+Decide if you want to export graphs as PNG to the figures folder. The code will automatically generate a figures folder if there is none.
+
+```
+export_png = True
+```
+
+Set the graph resolution in DPI
+
+```
+graph_resolution = 1000 
+```
+
+Set an export name for the graph
+
+```
+export_name = "Bond_Price_Time_Series_" + datetime.today().strftime('%Y_%m_%d') + ".png"
+```
+
+This will set the first date that is shown on the graph. It indicates on what day you would like to start your time series.
+
+```
+start_date = "2009-01-01"
+```
+
+This will set the last date that is shown on the graph.
+
+```
+end_date = "2024-04-19" 
+```
+
+Set the column name for the x-axis data.
+
+```
+x = "Date"
+```
+
+Set the column names for the y-axis data.
+
+```
+y = "Bond_Price"
+```
+
+Set x-axis label
+
+```
+x_label = "" 
+```
+
+Set y-axis label
+
+```
+y_label = "Federal Bond Price" 
+```
+
+Depending on your preferences and the period considered in your graphs you can determine how many dates you want to show on the x-axis.
+
+```
+amount_x_ticks = 20 
+```
+
+Decide if you want to show a zero line on the graph. If you set this to true, it will generate a dashed straight line for y = 0.
+
+```
+show_zero_line = False
+```
+
+Set graph title
+
+```
+graph_title = "Bond Price over Time"
+```
+
+Decide if you want to show a legend
+
+```
+show_legend = False
+```
+
+Set legend title
+
+```
+legend_title = "Legend"
+```
+
+Set legend value (i.e. the string that is attributed to the line)
+
+```
+legend_value = "Federal Bond Price"
+```
+
+Set source text of data. This will be printed in the bottom left part of the graph.
+
+```
+source_text = "Source: Svensson Parameter Bundesbank"
+```
+
+Set file path to the directory that includes the figures and data input folders /Figures and /Clean_Data.
+
+```
+file_path = "C:/Users/..." 
+```
+
+Set folder path for data to be imported. This is a path starting from the location of "file_path".
+
+```
+folder_path = "Clean_Data/"
+```
+
+### Output:
+
+Here is an example of a graph that was generated with this code. It shows the time series of a german government bond price. 
+
+![Time Series of Bond Price for given maturity](https://github.com/mauriceschmetzer/Interest-Rates/blob/main/Figures/Bond_Price_Time_Series_2024_04_27.png)
