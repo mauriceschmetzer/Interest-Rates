@@ -5,7 +5,7 @@
 
 1. Calculating interest rates
 2. Calculating bond prices
-3. Visualizing time series of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity (With possibility to compare data with any other time series on second y-axis).
+3. Visualizing the time series of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity (With the possibility to compare data with any other time series on the second y-axis).
 4. Visualizing the term structure of interest rates for German government bonds, covered bonds, and their respective yield spread for any maturity.
 5. Visualizing time series of bond prices for German government bonds and covered bonds.
 
@@ -48,8 +48,8 @@ The files will be saved in the folder */Clean_Data*. This folder is automaticall
 
 ## 2. Calculating Bond Prices
 
-- Imports Svensson Parameters as calculated by the python code "Calculating Interest Rates"
-- Calculates yield to maturity for each day during set time period based on shrinking time to maturity. 
+- Imports Svensson Parameters as calculated by the Python code "Calculating Interest Rates"
+- Calculates yield to maturity for each day during a set period based on shrinking time to maturity. 
 - Calculates bond price based on previously calculated yield to maturity and time to maturity
 
 ### Settings:
@@ -74,7 +74,7 @@ This is a path starting from the location of "file_path".
 folder_path = "Clean_Data/"
 ```
 
-CSV File name for the svensson parameters
+CSV File name for the Svensson parameters
 
 ```
 svensson_parameter_file_name = "ts_federal_bonds_svensson_parameters_2024_04_26.csv"
@@ -88,12 +88,18 @@ export_file_name_prefix = "ts_federal_bond_price_"
 
 ### Output:
 
+This code generates one output file:
+
+- *ts_bond_price_yyyy_mm_dd.csv* = Time Series of specific German Government Bond Price
+
+The file will be saved in the folder */Clean_Data*. This folder is automatically generated if it doesn't exist. 
+
 ## 3. Visualizing Time Series of Interest Rates
 
 ### File Objectives:
 
 - Visualizes the time series of interest rates for any desired maturity
-- Optional: Compare time series of interest rates to any other time series of data that is visualized on second y-axis.
+- Optional: Compare the time series of interest rates to any other time series of data that is visualized on the second y-axis.
 
 ### Settings:
 
