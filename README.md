@@ -589,3 +589,5 @@ folder_path = "Clean_Data/"
 Here is an example of a graph that was generated with this code. It shows the time series of a german government bond price. 
 
 ![Time Series of Bond Price for given maturity](https://github.com/mauriceschmetzer/Interest-Rates/blob/main/Figures/Bond_Price_Time_Series_2024_04_27.png)
+
+> Developed by Maurice Schmetzer
