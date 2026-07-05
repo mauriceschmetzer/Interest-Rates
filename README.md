@@ -10,8 +10,8 @@ The project is designed for financial data analysis, fixed-income research, and 
 
 Maurice Schmetzer  
 M.Sc. Data Science in Business & Economics, University of Tübingen  
-GitHub: github.com/mauriceschmetzer  
-LinkedIn: linkedin.com/in/maurice-schmetzer
+LinkedIn: [linkedin.com/in/maurice-schmetzer](https://www.linkedin.com/in/maurice-schmetzer) <br>
+GitHub: [github.com/mauriceschmetzer](https://github.com/mauriceschmetzer)
 ##
 
 > [!NOTE]
