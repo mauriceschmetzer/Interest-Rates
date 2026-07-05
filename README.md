@@ -1,5 +1,19 @@
 # Calculating & Visualizing Interest Rates
 
+## Summary
+
+This repository contains Python scripts for calculating and visualizing German government bond and covered bond interest rates using Bundesbank Svensson parameters. It supports the analysis of interest-rate time series, term structures, bond prices, and yield spreads across different maturities, with outputs exported as structured CSV files and presentation-ready figures.
+
+The project is designed for financial data analysis, fixed-income research, and reproducible visualization of German interest-rate dynamics.
+
+## Author
+
+Maurice Schmetzer  
+M.Sc. Data Science in Business & Economics, University of Tübingen  
+GitHub: github.com/mauriceschmetzer  
+LinkedIn: linkedin.com/in/maurice-schmetzer
+##
+
 > [!NOTE]
 > There are five Python code files. You can find instructions on how to use them in the sections below.
 
